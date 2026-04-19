@@ -1,0 +1,105 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.zs-task-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $zs-space-sm;
+  margin-bottom: $zs-space-lg;
+}
+
+.zs-filter-pill {
+  border: 1px solid $zs-color-border;
+  background: $zs-color-surface;
+  color: $zs-color-muted;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: $zs-color-text;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &--active {
+    background: $zs-color-accent-soft;
+    color: $zs-color-text;
+    border-color: rgba(196, 30, 58, 0.45);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.zs-task-desc {
+  font-size: 0.85rem;
+  margin-top: $zs-space-xs;
+  max-width: 42ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.zs-table__action-row--tasks {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.zs-badge--pending {
+  background: rgba(240, 180, 41, 0.12);
+  color: $zs-color-warning;
+  border-color: rgba(240, 180, 41, 0.35);
+}
+
+.zs-task-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-md;
+
+  @include respond-md {
+    display: none;
+  }
+}
+
+.zs-task-card {
+  border: 1px solid $zs-color-border;
+  border-radius: $zs-radius-md;
+  padding: $zs-space-md;
+  background: $zs-color-surface;
+}
+
+.zs-task-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $zs-space-sm;
+  margin-bottom: $zs-space-xs;
+}
+
+.zs-task-card__desc {
+  margin: 0 0 $zs-space-sm;
+  font-size: 0.9rem;
+}
+
+.zs-task-card__meta {
+  margin: 0 0 $zs-space-md;
+  font-size: 0.85rem;
+  color: $zs-color-muted;
+}
+
+.zs-task-card__actions {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.2rem;
+}

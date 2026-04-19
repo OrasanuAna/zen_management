@@ -1,0 +1,38 @@
+@use '../abstracts/variables' as *;
+
+.zs-alert {
+  padding: $zs-space-md;
+  border-radius: $zs-radius-sm;
+  border: 1px solid $zs-color-border;
+  background: rgba(255, 255, 255, 0.03);
+  margin-bottom: $zs-space-md;
+}
+
+.zs-alert__title {
+  display: block;
+  margin-bottom: $zs-space-xs;
+}
+
+.zs-alert__body {
+  font-size: 0.95rem;
+  color: $zs-color-muted;
+
+  p {
+    margin: 0;
+  }
+}
+
+.zs-alert--success {
+  border-color: rgba(61, 214, 140, 0.45);
+  background: rgba(61, 214, 140, 0.08);
+}
+
+.zs-alert--warning {
+  border-color: rgba(240, 180, 41, 0.45);
+  background: rgba(240, 180, 41, 0.08);
+}
+
+.zs-alert--error {
+  border-color: rgba(255, 107, 107, 0.45);
+  background: rgba(255, 107, 107, 0.08);
+}

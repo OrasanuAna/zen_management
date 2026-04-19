@@ -1,0 +1,105 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.zs-auth-layout {
+  min-height: 100vh;
+  display: grid;
+
+  @include respond-md {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.zs-auth-layout__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $zs-space-xl $zs-space-lg;
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.zs-auth-layout__brand {
+  display: flex;
+  align-items: center;
+  gap: $zs-space-md;
+  margin-bottom: $zs-space-xl;
+}
+
+.zs-auth-layout__logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, $zs-color-accent, #7a1024);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.zs-auth-layout__name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.zs-auth-layout__tagline {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: $zs-color-muted;
+}
+
+.zs-auth-layout__aside {
+  display: none;
+  position: relative;
+  background: radial-gradient(circle at 20% 20%, rgba(196, 30, 58, 0.35), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(90, 120, 200, 0.2), transparent 40%), $zs-color-surface;
+
+  @include respond-md {
+    display: block;
+  }
+}
+
+.zs-auth-layout__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.zs-auth-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.zs-link {
+  color: $zs-color-text;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: #f28a9a;
+  }
+}
+
+.zs-auth-footer {
+  margin: $zs-space-lg 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: $zs-color-muted;
+
+  a {
+    color: $zs-color-text;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

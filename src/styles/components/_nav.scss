@@ -1,0 +1,62 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.zs-navlink {
+  display: flex;
+  align-items: center;
+  gap: $zs-space-sm;
+  padding: 0.55rem 0.65rem;
+  border-radius: $zs-radius-sm;
+  color: $zs-color-muted;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: $zs-color-text;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.zs-navlink--active {
+  background: $zs-color-accent-soft;
+  color: $zs-color-text;
+  border: 1px solid rgba(196, 30, 58, 0.35);
+}
+
+.zs-navlink__icon {
+  display: grid;
+  place-items: center;
+  opacity: 0.9;
+}
+
+.zs-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $zs-radius-sm;
+  border: 1px solid $zs-color-border;
+  background: $zs-color-surface-elevated;
+  color: $zs-color-text;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  @include respond-md {
+    display: none;
+  }
+}

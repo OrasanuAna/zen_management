@@ -1,0 +1,83 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+a.zs-button {
+  text-decoration: none;
+}
+
+.zs-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $zs-space-sm;
+  padding: 0.65rem 1.1rem;
+  border-radius: $zs-radius-sm;
+  border: 1px solid transparent;
+  background: $zs-color-accent;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.15s ease;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.05);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.zs-button--secondary {
+  background: transparent;
+  border-color: $zs-color-border;
+  color: $zs-color-text;
+}
+
+.zs-button--ghost {
+  background: transparent;
+  color: $zs-color-muted;
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    color: $zs-color-text;
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.zs-button--danger {
+  background: #8b1c1c;
+}
+
+.zs-button--block {
+  width: 100%;
+}
+
+.zs-button__spinner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: zs-spin 0.7s linear infinite;
+}
+
+.zs-button--loading .zs-button__text--hidden {
+  opacity: 0;
+}
+
+@keyframes zs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

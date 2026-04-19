@@ -1,0 +1,183 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.zs-employees-loading {
+  display: flex;
+  justify-content: center;
+  padding: $zs-space-xl;
+}
+
+.zs-table-wrap {
+  display: none;
+  overflow-x: auto;
+  border: 1px solid $zs-color-border;
+  border-radius: $zs-radius-md;
+  background: $zs-color-surface;
+
+  @include respond-md {
+    display: block;
+  }
+}
+
+.zs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+
+  th,
+  td {
+    text-align: left;
+    padding: $zs-space-sm $zs-space-md;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  th {
+    color: $zs-color-muted;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.zs-table__strong {
+  font-weight: 600;
+}
+
+.zs-table__muted {
+  color: $zs-color-muted;
+  font-size: 0.9rem;
+}
+
+.zs-table__actions {
+  white-space: nowrap;
+  width: 1%;
+}
+
+.zs-table__action-row {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.zs-employee-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-md;
+
+  @include respond-md {
+    display: none;
+  }
+}
+
+.zs-employee-card {
+  border: 1px solid $zs-color-border;
+  border-radius: $zs-radius-md;
+  padding: $zs-space-md;
+  background: $zs-color-surface;
+}
+
+.zs-employee-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $zs-space-sm;
+  margin-bottom: $zs-space-xs;
+}
+
+.zs-employee-card__meta {
+  margin: 0 0 $zs-space-xs;
+  font-size: 0.9rem;
+  color: $zs-color-muted;
+}
+
+.zs-employee-card__contact {
+  margin: 0 0 $zs-space-md;
+  font-size: 0.85rem;
+}
+
+.zs-employee-card__actions {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.zs-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.zs-badge--success {
+  background: rgba(61, 214, 140, 0.12);
+  color: $zs-color-success;
+  border-color: rgba(61, 214, 140, 0.35);
+}
+
+.zs-badge--muted {
+  background: rgba(154, 163, 181, 0.12);
+  color: $zs-color-muted;
+  border-color: $zs-color-border;
+}
+
+.zs-link--inline {
+  display: inline;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: $zs-color-text;
+  font-family: inherit;
+
+  &:hover {
+    color: #f28a9a;
+  }
+}
+
+.zs-link--danger {
+  color: $zs-color-error;
+
+  &:hover {
+    color: #ff8a8a;
+  }
+}
+
+.zs-button--small {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.zs-checkbox-field {
+  padding: $zs-space-sm 0;
+}
+
+.zs-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: $zs-space-sm;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: $zs-color-muted;
+}
+
+.zs-checkbox {
+  margin-top: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  accent-color: $zs-color-accent;
+}

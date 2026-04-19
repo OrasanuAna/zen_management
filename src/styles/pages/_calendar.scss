@@ -1,0 +1,459 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.zs-cal-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-md;
+  margin-bottom: $zs-space-lg;
+
+  @include respond-md {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.zs-cal-toolbar__views {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $zs-space-xs;
+}
+
+.zs-cal-view-btn {
+  border: 1px solid $zs-color-border;
+  background: $zs-color-surface;
+  color: $zs-color-muted;
+  padding: 0.45rem 0.9rem;
+  border-radius: $zs-radius-sm;
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  &--active {
+    background: $zs-color-accent-soft;
+    color: $zs-color-text;
+    border-color: rgba(196, 30, 58, 0.45);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.zs-cal-toolbar__nav {
+  display: flex;
+  align-items: center;
+  gap: $zs-space-sm;
+  flex-wrap: wrap;
+}
+
+.zs-cal-toolbar__title {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  min-width: 0;
+  flex: 1;
+  text-align: center;
+
+  @include respond-md {
+    flex: 0 1 auto;
+    min-width: 200px;
+  }
+}
+
+.zs-cal-today {
+  margin-left: auto;
+  border: 1px solid $zs-color-border;
+  background: transparent;
+  color: $zs-color-text;
+  padding: 0.45rem 0.75rem;
+  border-radius: $zs-radius-sm;
+  cursor: pointer;
+  font-size: 0.85rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.zs-cal-month {
+  border: 1px solid $zs-color-border;
+  border-radius: $zs-radius-md;
+  overflow: hidden;
+  background: $zs-color-surface;
+  margin-bottom: $zs-space-lg;
+}
+
+.zs-cal-month__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: $zs-color-border;
+  border-bottom: 1px solid $zs-color-border;
+}
+
+.zs-cal-month__weekday {
+  padding: $zs-space-sm;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $zs-color-muted;
+  background: $zs-color-surface-elevated;
+}
+
+.zs-cal-month__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: $zs-color-border;
+}
+
+.zs-cal-cell {
+  min-height: 100px;
+  padding: $zs-space-xs;
+  text-align: left;
+  border: none;
+  background: $zs-color-surface;
+  color: $zs-color-text;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  transition: background 0.12s ease;
+
+  @include respond-md {
+    min-height: 120px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &--outside {
+    opacity: 0.45;
+  }
+
+  &--today {
+    box-shadow: inset 0 0 0 2px rgba(196, 30, 58, 0.55);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+    z-index: 1;
+  }
+}
+
+.zs-cal-cell__num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  align-self: flex-end;
+}
+
+.zs-cal-cell__tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.zs-cal-cell__tasks li {
+  margin-bottom: 2px;
+}
+
+.zs-cal-cell__more {
+  font-size: 0.7rem;
+  color: $zs-color-muted;
+}
+
+.zs-cal-task-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  color: $zs-color-text;
+  text-decoration: none;
+  text-align: left;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.zs-cal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $zs-color-warning;
+  flex-shrink: 0;
+  margin-top: 3px;
+
+  &--done {
+    background: $zs-color-success;
+  }
+
+  &--off {
+    background: $zs-color-muted;
+  }
+}
+
+.zs-cal-task-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.zs-cal-week {
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-md;
+  margin-bottom: $zs-space-lg;
+
+  @include respond-md {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+.zs-cal-week__col {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid $zs-color-border;
+  border-radius: $zs-radius-md;
+  background: $zs-color-surface;
+  overflow: hidden;
+
+  &--today {
+    box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.35);
+  }
+}
+
+.zs-cal-week__head {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: $zs-space-sm $zs-space-md;
+  background: $zs-color-surface-elevated;
+  border: none;
+  border-bottom: 1px solid $zs-color-border;
+  color: $zs-color-text;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.zs-cal-week__dow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: $zs-color-muted;
+  letter-spacing: 0.04em;
+}
+
+.zs-cal-week__dom {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.zs-cal-week__list {
+  list-style: none;
+  margin: 0;
+  padding: $zs-space-sm;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.zs-cal-week__empty {
+  font-size: 0.85rem;
+  color: $zs-color-muted;
+  padding: $zs-space-sm;
+}
+
+.zs-cal-week__task {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: $zs-space-sm;
+  border-radius: $zs-radius-sm;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: $zs-space-xs;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:hover {
+    border-color: rgba(196, 30, 58, 0.35);
+  }
+}
+
+.zs-cal-week__time {
+  font-size: 0.75rem;
+  color: $zs-color-muted;
+  font-variant-numeric: tabular-nums;
+}
+
+.zs-cal-week__task-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.zs-cal-week__badge {
+  align-self: flex-start;
+  font-size: 0.65rem;
+}
+
+.zs-cal-week__shifts {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: $zs-space-sm;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.zs-cal-week__shifts-label {
+  margin: 0 0 $zs-space-xs;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $zs-color-muted;
+}
+
+.zs-cal-week__shifts-link {
+  color: $zs-color-accent;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.zs-cal-week__shift-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.zs-cal-week__shift-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: $zs-space-xs 0;
+  font-size: 0.78rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.zs-cal-week__shift-name {
+  font-weight: 600;
+  color: $zs-color-text;
+}
+
+.zs-cal-day__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.zs-cal-day__item {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: $zs-space-md;
+  padding: $zs-space-md 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.zs-cal-day__time {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $zs-color-muted;
+  font-variant-numeric: tabular-nums;
+}
+
+.zs-cal-day__title {
+  font-weight: 600;
+  color: $zs-color-text;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.zs-cal-day__desc {
+  margin: $zs-space-xs 0;
+  font-size: 0.9rem;
+}
+
+.zs-cal-day__footer {
+  margin: $zs-space-lg 0 0;
+  padding-top: $zs-space-md;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.zs-cal-no-due {
+  margin-top: $zs-space-lg;
+}
+
+.zs-cal-no-due__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 1;
+
+  @include respond-md {
+    columns: 2;
+  }
+}
+
+.zs-cal-no-due__list li {
+  break-inside: avoid;
+  margin-bottom: $zs-space-sm;
+}
+
+.zs-cal-no-due__link {
+  color: $zs-color-text;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.zs-cal-hint {
+  margin-top: $zs-space-lg;
+  font-size: 0.9rem;
+
+  a {
+    color: $zs-color-text;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

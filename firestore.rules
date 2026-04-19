@@ -1,0 +1,77 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * organizationId din documentul users/{uid}.
+     * Dacă lipsește (document vechi sau creat manual), folosim același default ca în aplicație
+     * (src/config/organization.ts — DEFAULT_ORGANIZATION_ID). Altfel regulile văd null iar aplicația trimite 'zen-sushi-srl'.
+     */
+    function userOrg() {
+      let data = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      return data.organizationId != null ? data.organizationId : 'zen-sushi-srl';
+    }
+
+    match /users/{userId} {
+      allow read, write: if signedIn() && request.auth.uid == userId;
+    }
+
+    match /tasks/{taskId} {
+      allow read: if signedIn() && resource.data.organizationId == userOrg();
+      allow create: if signedIn()
+        && request.resource.data.organizationId == userOrg()
+        && request.resource.data.createdBy == request.auth.uid;
+      allow update: if signedIn()
+        && resource.data.organizationId == userOrg()
+        && request.resource.data.organizationId == resource.data.organizationId;
+      allow delete: if signedIn() && resource.data.organizationId == userOrg();
+    }
+
+    match /employees/{employeeId} {
+      allow read: if signedIn() && resource.data.organizationId == userOrg();
+      allow create: if signedIn()
+        && request.resource.data.organizationId == userOrg()
+        && request.resource.data.createdBy == request.auth.uid;
+      allow update: if signedIn()
+        && resource.data.organizationId == userOrg()
+        && request.resource.data.organizationId == resource.data.organizationId;
+      allow delete: if signedIn() && resource.data.organizationId == userOrg();
+    }
+
+    match /shifts/{shiftId} {
+      allow read: if signedIn() && resource.data.organizationId == userOrg();
+      allow create: if signedIn()
+        && request.resource.data.organizationId == userOrg()
+        && request.resource.data.createdBy == request.auth.uid;
+      allow update: if signedIn()
+        && resource.data.organizationId == userOrg()
+        && request.resource.data.organizationId == resource.data.organizationId;
+      allow delete: if signedIn() && resource.data.organizationId == userOrg();
+    }
+
+    match /procedureRuns/{runId} {
+      /**
+       * Listener pe document încă inexistent: resource nu există → vechea regulă eșua cu PERMISSION_DENIED.
+       * Permitem citirea căilor goale (doar autentificat); la primul snapshot cu date, verificăm organizația.
+       */
+      allow read: if signedIn() && (
+        !exists(/databases/$(database)/documents/procedureRuns/$(runId))
+        || resource.data.organizationId == userOrg()
+      );
+      allow create: if signedIn()
+        && request.resource.data.organizationId == userOrg()
+        && request.resource.data.startedBy == request.auth.uid;
+      allow update: if signedIn()
+        && resource.data.organizationId == userOrg()
+        && request.resource.data.organizationId == resource.data.organizationId
+        && request.resource.data.type == resource.data.type
+        && request.resource.data.dateKey == resource.data.dateKey
+        && request.resource.data.startedBy == resource.data.startedBy;
+      allow delete: if signedIn() && resource.data.organizationId == userOrg();
+    }
+  }
+}

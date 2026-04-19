@@ -1,0 +1,53 @@
+@use '../abstracts/variables' as *;
+
+.zs-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: $zs-space-lg;
+}
+
+.zs-modal-root__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.zs-modal {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 420px);
+  background: $zs-color-surface-elevated;
+  border: 1px solid $zs-color-border;
+  border-radius: $zs-radius-md;
+  padding: $zs-space-lg;
+  box-shadow: $zs-shadow-soft;
+}
+
+.zs-modal__title {
+  margin: 0 0 $zs-space-md;
+  font-size: 1.15rem;
+}
+
+.zs-modal__body {
+  color: $zs-color-muted;
+  font-size: 0.95rem;
+
+  p {
+    margin: 0 0 $zs-space-sm;
+  }
+}
+
+.zs-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: $zs-space-sm;
+  margin-top: $zs-space-lg;
+  flex-wrap: wrap;
+}
+
+.zs-modal-error {
+  margin-top: $zs-space-md;
+}

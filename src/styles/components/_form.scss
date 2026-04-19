@@ -1,0 +1,83 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.zs-field {
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-xs;
+}
+
+.zs-label {
+  font-size: 0.9rem;
+  color: $zs-color-muted;
+}
+
+.zs-textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: $zs-radius-sm;
+  border: 1px solid $zs-color-border;
+  background: $zs-color-surface;
+  color: $zs-color-text;
+  resize: vertical;
+  min-height: 96px;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(196, 30, 58, 0.65);
+    box-shadow: 0 0 0 3px $zs-color-accent-soft;
+  }
+
+  &--error {
+    border-color: rgba(255, 107, 107, 0.65);
+  }
+}
+
+.zs-input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: $zs-radius-sm;
+  border: 1px solid $zs-color-border;
+  background: $zs-color-surface;
+  color: $zs-color-text;
+
+  &::placeholder {
+    color: rgba(154, 163, 181, 0.55);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(196, 30, 58, 0.65);
+    box-shadow: 0 0 0 3px $zs-color-accent-soft;
+  }
+
+  &--error {
+    border-color: rgba(255, 107, 107, 0.65);
+  }
+}
+
+.zs-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: $zs-color-muted;
+}
+
+.zs-error {
+  margin: 0;
+  font-size: 0.8rem;
+  color: $zs-color-error;
+}
+
+.zs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-sm;
+}
+
+.zs-stack--md {
+  gap: $zs-space-md;
+}
+
+.zs-stack--lg {
+  gap: $zs-space-lg;
+}

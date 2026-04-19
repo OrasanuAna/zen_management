@@ -1,0 +1,57 @@
+@use '../abstracts/variables' as *;
+
+.zs-readonly-field {
+  margin-bottom: $zs-space-lg;
+  padding-bottom: $zs-space-md;
+  border-bottom: 1px solid $zs-color-border;
+}
+
+.zs-readonly-field__value {
+  margin: $zs-space-xs 0 0;
+  font-size: 1rem;
+}
+
+.zs-readonly-field__hint {
+  margin-top: $zs-space-sm;
+}
+
+.zs-profile-form {
+  margin-top: $zs-space-md;
+}
+
+.zs-profile-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $zs-space-sm;
+}
+
+.zs-dl {
+  margin: 0;
+}
+
+.zs-dl__row {
+  display: grid;
+  grid-template-columns: minmax(0, 140px) 1fr;
+  gap: $zs-space-md;
+  padding: $zs-space-sm 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  dt {
+    margin: 0;
+    color: $zs-color-muted;
+    font-size: 0.9rem;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+.zs-stack__tight {
+  margin-bottom: $zs-space-md;
+}

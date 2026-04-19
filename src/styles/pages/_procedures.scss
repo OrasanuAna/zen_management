@@ -1,0 +1,89 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.zs-proc-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-sm;
+  margin-bottom: $zs-space-lg;
+  max-width: 280px;
+}
+
+.zs-proc-toolbar__hint {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.zs-proc-card {
+  margin-bottom: $zs-space-lg;
+}
+
+.zs-proc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-lg;
+}
+
+.zs-proc-item {
+  padding-bottom: $zs-space-md;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.zs-proc-row {
+  display: flex;
+  align-items: flex-start;
+  gap: $zs-space-md;
+  cursor: pointer;
+  margin-bottom: $zs-space-sm;
+
+  &--locked {
+    cursor: default;
+    opacity: 0.85;
+  }
+}
+
+.zs-proc-check {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: $zs-color-accent;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.zs-proc-row--locked .zs-proc-check {
+  cursor: not-allowed;
+}
+
+.zs-proc-label {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: $zs-color-text;
+}
+
+.zs-proc-note .zs-label {
+  font-size: 0.75rem;
+}
+
+.zs-proc-actions {
+  margin-top: $zs-space-md;
+}
+
+.zs-proc-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $zs-space-sm;
+  margin-bottom: $zs-space-xl;
+}

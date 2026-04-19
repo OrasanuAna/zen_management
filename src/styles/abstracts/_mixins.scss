@@ -1,0 +1,12 @@
+@use 'variables' as *;
+
+@mixin respond-md {
+  @media (min-width: $zs-break-md) {
+    @content;
+  }
+}
+
+@mixin focus-ring {
+  outline: 2px solid rgba(196, 30, 58, 0.55);
+  outline-offset: 2px;
+}

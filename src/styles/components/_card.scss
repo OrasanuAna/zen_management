@@ -1,0 +1,56 @@
+@use "../abstracts/variables" as *;
+
+.zs-card {
+  background: $zs-color-surface;
+  border: 1px solid $zs-color-border;
+  border-radius: $zs-radius-md;
+  box-shadow: $zs-shadow-soft;
+}
+
+.zs-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $zs-space-md;
+  padding: $zs-space-lg $zs-space-lg 0;
+}
+
+.zs-card__title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.zs-card__subtitle {
+  margin: $zs-space-xs 0 0;
+  font-size: 0.9rem;
+  color: $zs-color-muted;
+}
+
+.zs-card__actions {
+  display: flex;
+  gap: $zs-space-sm;
+}
+
+.zs-card__body {
+  padding: $zs-space-lg;
+}
+
+.zs-kpi-grid {
+  display: grid;
+  gap: $zs-space-md;
+  margin-bottom: $zs-space-lg;
+
+  @media (min-width: $zs-break-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $zs-break-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.zs-kpi__value {
+  margin: $zs-space-sm 0 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}

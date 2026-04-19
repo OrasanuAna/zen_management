@@ -1,0 +1,164 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.zs-shell {
+  min-height: 100vh;
+  background: $zs-color-bg;
+
+  @include respond-md {
+    display: flex;
+  }
+}
+
+.zs-shell__scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 20;
+
+  .zs-shell--nav-open & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @include respond-md {
+    display: none;
+  }
+}
+
+.zs-sidebar {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(88vw, $zs-sidebar-width);
+  background: $zs-color-surface;
+  border-right: 1px solid $zs-color-border;
+  padding: $zs-space-lg $zs-space-md;
+  display: flex;
+  flex-direction: column;
+  gap: $zs-space-lg;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+
+  .zs-shell--nav-open & {
+    transform: translateX(0);
+  }
+
+  @include respond-md {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex: 0 0 $zs-sidebar-width;
+    transform: none;
+    width: $zs-sidebar-width;
+  }
+}
+
+.zs-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: $zs-space-md;
+}
+
+.zs-sidebar__mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, $zs-color-accent, #7a1024);
+  color: #fff;
+  font-weight: 700;
+}
+
+.zs-sidebar__title {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.zs-sidebar__subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: $zs-color-muted;
+}
+
+.zs-sidebar__section-label {
+  margin: 0 0 $zs-space-sm;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $zs-color-muted;
+}
+
+.zs-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zs-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.zs-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: $zs-topbar-height;
+  display: flex;
+  align-items: center;
+  gap: $zs-space-md;
+  padding: 0 $zs-space-lg;
+  background: rgba(15, 17, 21, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $zs-color-border;
+}
+
+.zs-topbar__menu {
+  @include respond-md {
+    display: none;
+  }
+}
+
+.zs-topbar__spacer {
+  flex: 1;
+}
+
+.zs-topbar__user {
+  display: flex;
+  align-items: center;
+  gap: $zs-space-md;
+}
+
+.zs-topbar__name {
+  font-size: 0.9rem;
+  color: $zs-color-muted;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zs-content {
+  flex: 1;
+  padding: $zs-space-lg;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.zs-route-loading {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: $zs-space-xl;
+}

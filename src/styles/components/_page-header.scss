@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as *;
+
+.zs-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $zs-space-md;
+  margin-bottom: $zs-space-lg;
+}
+
+.zs-page-header__title {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.zs-page-header__desc {
+  margin: $zs-space-xs 0 0;
+  color: $zs-color-muted;
+  max-width: 52ch;
+}
+
+.zs-page-header__actions {
+  display: flex;
+  gap: $zs-space-sm;
+  flex-wrap: wrap;
+}
