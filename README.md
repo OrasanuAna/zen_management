@@ -1,73 +1,141 @@
-# React + TypeScript + Vite
+# Zen Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 **Live Application:** https://zenmanagement.vercel.app/
 
-Currently, two official plugins are available:
+## Descriere
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Zen Manager este o aplicație web dezvoltată pentru managementul operațional al personalului din cadrul lanțurilor de restaurante Zen Sushi. Aplicația are rolul de a digitaliza și centraliza procesele administrative și operaționale, oferind managerilor o soluție eficientă pentru organizarea activităților zilnice și monitorizarea echipei.
 
-## React Compiler
+## Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Aplicația poate fi accesată online la:
 
-## Expanding the ESLint configuration
+👉 https://zenmanagement.vercel.app/
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Funcționalități
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Gestionarea angajaților
+- Managementul task-urilor operaționale
+- Planificarea programului de lucru
+- Calendar pentru organizarea activităților
+- Gestionarea procedurilor și checklist-urilor
+- Dashboard cu statistici și informații relevante
+- Monitorizarea activităților zilnice
+- Generarea de rapoarte operaționale
+- Autentificare și gestionare utilizatori
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tehnologii utilizate
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Frontend
+- React
+- TypeScript
+- SCSS
+- TanStack Router
+
+### Backend & Database
+- Firebase Authentication
+- Cloud Firestore
+
+### Alte librării
+- React Icons
+- Vite
+
+## Structura proiectului
+
+```bash
+src/
+│
+├── routes/
+├── components/
+├── layouts/
+├── services/
+├── hooks/
+├── styles/
+├── assets/
+└── firebase/
+````
+
+## Instalare
+
+### 1. Clonarea repository-ului
+
+```bash
+git clone https://github.com/username/zen-manager.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instalarea dependențelor
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Configurarea Firebase
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+### 4. Pornirea aplicației
+
+```bash
+npm run dev
+```
+
+Aplicația va fi disponibilă la:
+
+```bash
+http://localhost:5173
+```
+
+## Module principale
+
+### Dashboard
+
+Afișează o imagine de ansamblu asupra activităților și statisticilor importante.
+
+### Employees
+
+Gestionarea angajaților și vizualizarea informațiilor acestora.
+
+### Tasks
+
+Crearea, editarea și monitorizarea task-urilor operaționale.
+
+### Calendar
+
+Planificarea activităților și a programului de lucru.
+
+### Procedures
+
+Gestionarea procedurilor și checklist-urilor utilizate în cadrul restaurantului.
+
+### Reports
+
+Vizualizarea și generarea rapoartelor operaționale.
+
+## Beneficii
+
+* Centralizarea informațiilor
+* Reducerea proceselor manuale
+* Creșterea eficienței operaționale
+* Monitorizarea activităților în timp real
+* Sprijinirea procesului decizional managerial
+* Îmbunătățirea organizării personalului
+
+## Autor
+
+**Ana-Maria Orășanu**
+Masterand – Informatică Managerială
+Universitatea Româno-Americană
+
+## Licență
+
+Acest proiect a fost dezvoltat în scop academic, ca parte a lucrării de disertație:
+
+**„Proiectarea, Implementarea și Dezvoltarea unei Aplicații Web pentru Managementul Operațional al Personalului în Lanțurile de Restaurante Zen Sushi”**
+
